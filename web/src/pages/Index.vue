@@ -3,12 +3,11 @@
     <!-- Author intro -->
     <author-card :show-title="true" />
 
-    <!-- List posts -->
-    <div class="posts">
-      <post-card
-        v-for="edge in $page.posts.edges"
+    <div class="projects">
+      <project-card
+        v-for="edge in $page.projects.edges"
         :key="edge.node.id"
-        :post="edge.node"
+        :project="edge.node"
         :metadata="$page.metadata"
       />
     </div>
@@ -23,7 +22,7 @@
       dataset
     }
   }
-  posts: allSanityPost(sortBy: "publishedAt") {
+  projects: allSanityProject(sortBy: "publishedAt") {
     edges {
       node {
         id
@@ -66,15 +65,15 @@
 
 <script>
 import AuthorCard from '~/components/AuthorCard'
-import PostCard from '~/components/PostCard'
+import ProjectCard from '~/components/ProjectCard'
 
 export default {
   components: {
     AuthorCard,
-    PostCard
+    ProjectCard
   },
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'Work'
   }
 }
 </script>
