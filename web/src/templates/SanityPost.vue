@@ -69,7 +69,7 @@ query Post ($id: ID!) {
       dataset
     }
   }
-  post: Post (id: $id) {
+  post: sanityPost (id: $id) {
     title
     publishedAt (format: "D. MMMM YYYY")
     categories {
