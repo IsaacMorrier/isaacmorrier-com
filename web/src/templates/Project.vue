@@ -62,7 +62,7 @@ query Project ($id: ID!) {
       dataset
     }
   }
-  project: sanityProject (id: $id) {
+  project: Project (id: $id) {
     title
     publishedAt (format: "D. MMMM YYYY")
     categories {
