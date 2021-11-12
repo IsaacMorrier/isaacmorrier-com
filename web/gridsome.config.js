@@ -19,7 +19,7 @@ module.exports = {
 
   templates: {
     SanityPost: '/:slug__current',
-    Projects: '/:slug__current'
+    Project: '/:slug__current'
   },
 
   plugins: [
