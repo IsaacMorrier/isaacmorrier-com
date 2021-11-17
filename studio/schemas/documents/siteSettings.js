@@ -10,6 +10,12 @@ export default {
       title: 'Title'
     },
     {
+      name: 'subtitle',
+      type: 'text',
+      title: 'Subtitle',
+      description: 'Text to appear after the logo on the home page.'
+    },
+    {
       name: 'description',
       type: 'text',
       title: 'Description',
