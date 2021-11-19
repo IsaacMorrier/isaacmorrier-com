@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div>
     <div class="post-title">
       <h1 class="post-title__text">{{ $page.post.title }}</h1>
 
@@ -31,7 +31,7 @@
     </div>
 
     <author-card class="post-author" />
-  </Layout>
+  </div>
 </template>
 
 <script>
@@ -57,6 +57,14 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    commitSubtitle: function(subtitle) {
+      this.$store.commit('setSubtitle', subtitle)
+    }
+  },
+  beforeMount(){
+    this.commitSubtitle('')
   }
 }
 </script>

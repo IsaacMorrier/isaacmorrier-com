@@ -21,5 +21,11 @@
   "devDependencies": {
     "@sanity/cli": "^2.20.0",
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "es6-promise": "^4.2.8",
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.1.0",
+    "vuex-shared-mutations": "^1.0.2"
   }
 }

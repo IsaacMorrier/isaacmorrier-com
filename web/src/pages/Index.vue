@@ -1,8 +1,6 @@
 <template>
-  <Layout :show-logo="false">
-    <!-- Author intro -->
-    <author-card :show-title="true" />
-
+  <div>
+    <!-- <button v-on:click="testMethod($page.settings.subtitle)">Test Button</button> -->
     <div class="projects">
       <project-card
         v-for="edge in $page.projects.edges"
@@ -11,7 +9,7 @@
         :metadata="$page.metadata"
       />
     </div>
-  </Layout>
+  </div>
 </template>
 
 <page-query>
@@ -21,6 +19,9 @@
       projectId
       dataset
     }
+  }
+  settings: sanitySiteSettings(id: "siteSettings") {
+    subtitle
   }
   projects: allSanityProject(sortBy: "publishedAt") {
     edges {
@@ -64,16 +65,22 @@
 </page-query>
 
 <script>
-import AuthorCard from '~/components/AuthorCard'
-import ProjectCard from '~/components/ProjectCard'
+  import ProjectCard from '~/components/ProjectCard'
 
-export default {
-  components: {
-    AuthorCard,
-    ProjectCard
-  },
-  metaInfo: {
-    title: 'Work'
+  export default {
+    components: {
+      ProjectCard
+    },
+    metaInfo: {
+      title: 'Work'
+    },
+    methods: {
+      commitSubtitle: function(subtitle) {
+        this.$store.commit('setSubtitle', subtitle)
+      }
+    },
+    beforeMount(){
+      this.commitSubtitle(this.$page.settings.subtitle)
+    }
   }
-}
 </script>

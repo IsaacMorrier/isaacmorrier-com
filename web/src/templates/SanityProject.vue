@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div>
     <div class="project-title">
       <h1 class="project-title__text">{{ $page.project.title }}</h1>
 
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-  </Layout>
+  </div>
 </template>
 
 <script>
@@ -35,6 +35,7 @@ import ProjectMeta from '~/components/ProjectMeta'
 import ProjectTags from '~/components/ProjectTags'
 
 export default {
+  name: "Project",
   components: {
     ProjectMeta,
     ProjectTags,
@@ -50,6 +51,14 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    commitSubtitle: function(subtitle) {
+      this.$store.commit('setSubtitle', subtitle)
+    }
+  },
+  beforeMount(){
+    this.commitSubtitle(' → ' + this.$page.project.title)
   }
 }
 </script>
