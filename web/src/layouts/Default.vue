@@ -6,6 +6,7 @@
             </div>
 
             <div class="header__right">
+                <g-link to="/info">info</g-link>
                 <toggle-theme />
             </div>
         </header>
