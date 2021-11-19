@@ -1,7 +1,127 @@
-.text-center {
-	text-align: center;
+@use "sass:math";
+
+@function rem-calc($n) {
+    $n: $n * .0625rem;
+    @return $n;
 }
 
-.space-bottom {
-	margin-bottom: var(--space);
+@function vw-calc($n) {
+    $n: $n * .267vw;
+    @return $n;
+}
+
+@function vw-calc-lg($n) {
+    $n: $n * .07vw;
+    @return $n;
+}
+
+$global-margin: .625rem;
+$global-gutter: .625rem;
+$global-margin-lg: 1.25rem;
+$global-gutter-lg: 1.25rem;
+
+$breakpoint-md: 37.5;
+$breakpoint-lg: 48;
+$breakpoint-xl: 64;
+$breakpoint-xxl: 120;
+$cols: 12;
+
+@mixin breakpoint($point) {
+    @if $point == md {
+      @media (min-width: ($breakpoint-md * 1rem)) { @content ; }
+   }
+    @if $point == lg {
+      @media (min-width: ($breakpoint-lg * 1rem)) { @content ; }
+   }
+    @else if $point == xl {
+      @media (min-width: ($breakpoint-xl * 1rem)) { @content ; }
+   }
+ }
+
+$map-grid-props: (
+    '': 0,
+    '-md': $breakpoint-md,
+    '-lg': $breakpoint-lg,
+    '-xl': $breakpoint-xl
+);
+
+@mixin create-mq($breakpoint, $min-or-max) {
+  @if($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$min-or-max}-width: ($breakpoint * 1rem)) {
+      @content;
+    }
+  }
+}
+
+@mixin create-col-classes($modifier, $cols, $breakpoint) {
+  @include create-mq($breakpoint, 'min') {
+    .col#{$modifier}-offset-0 {
+      margin-left: 0;
+    }
+    @for $i from 1 through $cols {
+      .col#{$modifier}-#{$i} {
+        flex-basis: math.div(100, (math.div($cols, $i) ) ) * 1%;
+      }
+      .col#{$modifier}-offset-#{$i} {
+        margin-left: math.div(100, (math.div($cols, $i) ) ) * 1%;
+      }
+    }
+  }
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+  @include create-mq($breakpoint - 1, 'max') {
+    .hidden#{$modifier}-down {
+      display: none !important;
+    }
+  }
+  @include create-mq($breakpoint, 'min') {
+    .hidden#{$modifier}-up {
+      display: none !important;
+    }
+  }
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $cols, $breakpoint);
+}
+
+.grid-container {
+  max-width: $breakpoint-xxl * 1rem;
+  margin: 0 auto;
+  padding: 0;
+  &-fluid {
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+.row {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    &.grid-padding {
+      padding-left: $global-margin - math.div($global-gutter, 2);
+      padding-right: $global-margin - math.div($global-gutter, 2);
+      @include breakpoint(lg) {
+        padding-left: $global-margin-lg - math.div($global-gutter-lg, 2);
+        padding-right: $global-margin-lg - math.div($global-gutter-lg, 2);
+      }
+    }
+}
+
+.grid-padding {
+  & > * {
+    padding-left: math.div($global-gutter, 2);
+    padding-right: math.div($global-gutter, 2);
+    @include breakpoint(lg) {
+      padding-left: math.div($global-gutter-lg, 2);
+      padding-right: math.div($global-gutter-lg, 2);
+    }
+  }
 }

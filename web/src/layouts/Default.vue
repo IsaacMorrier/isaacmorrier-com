@@ -1,13 +1,16 @@
 <template>
     <div>
-        <header class="header">
-            <div class="header__left">
-                <header-logo />
-            </div>
+        <header class="grid-container">
+            <div class="row grid-padding">
+                <div class="col-2 hidden-lg-down">back</div>
+                <div class="col-7">
+                    <header-logo />
+                </div>
 
-            <div class="header__right">
-                <g-link to="/info">info</g-link>
-                <toggle-theme />
+                <div class="col-2 col-offset-3">
+                    <g-link to="/info">info</g-link>
+                    <!-- <toggle-theme /> -->
+                </div>
             </div>
         </header>
 
@@ -17,20 +20,25 @@
             </transition>
         </main>
 
-        <footer>
-            <p>© Isaac Morrier {{ new Date().getFullYear() }}</p>
+        <footer class="grid-container">
+            <div class="row grid-padding">
+                <div class="col-12">
+                    <p>© Isaac Morrier {{ new Date().getFullYear() }}</p>
+                </div>
+                    
+            </div>
         </footer>
     </div>
 </template>
 
 <script>
     import HeaderLogo from '~/components/HeaderLogo'
-    import ToggleTheme from '~/components/ToggleTheme'
+    // import ToggleTheme from '~/components/ToggleTheme'
 
     export default {
         components: {
             HeaderLogo,
-            ToggleTheme
+            // ToggleTheme
         }
     }
 </script>

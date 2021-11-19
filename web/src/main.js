@@ -29,4 +29,10 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   Vue.component('Layout', DefaultLayout)
 
   Vue.prototype.$urlForImage = urlForImage
+
+  // Add Adobe Fonts
+  head.link.push({
+    rel: 'stylesheet',
+    href: 'https://use.typekit.net/ngl3ecq.css'
+  })
 }
