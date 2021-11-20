@@ -7,15 +7,6 @@ export default {
   },
   fields: [
     {
-      name: 'filename',
-      type: 'string',
-      title: 'Filename',
-      options: {
-        isHighlighted: true
-      },
-      initialValue: 'asset.originalFilename',
-    },
-    {
       name: 'caption',
       type: 'string',
       title: 'Caption',
@@ -58,7 +49,7 @@ export default {
   ],
   preview: {
     select: {
-      filename: 'filename',
+      filename: 'asset.originalFilename',
       imageUrl: 'asset.url',
       caption: 'caption',
       alt: 'alt',
