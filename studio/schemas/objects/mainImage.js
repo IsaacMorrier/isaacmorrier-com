@@ -30,15 +30,20 @@ export default {
       title: 'Layout',
       options: {
         list: [
-          {title: 'Full-width', value: 'full'},
-          {title: 'Half-width', value: 'half'},
-          {title: 'Half-width, offset', value: 'offset'},
-          {title: 'Half-width, centered', value: 'centered'},
+          {title: 'Front Page Full-width', value: 'col-10'},
+          {title: 'Front Page Half-width', value: 'col-5'},
+          {title: 'Full-width', value: 'col-12'},
+          {title: 'Half-width', value: 'col-6'},
+          {title: 'Half-width desktop, full-width mobile', value: 'col-12 col-md-6'},
+          {title: 'Half-width offset', value: 'col-6 col-offset-6'},
+          {title: 'Half-width offset desktop, full-width mobile', value: 'col-12 col-md-6 col-offset-md-6'},
+          {title: 'Half-width centered', value: 'col-6 col-offset-3'},
+          {title: 'Half-width centered desktop, full-width mobile', value: 'col-12 col-md-6 col-offset-md-3'},
         ],
         layout: 'radio',
         isHighlighted: true
       },
-      initialValue: 'full'
+      initialValue: 'col-12'
 
     }
   ],

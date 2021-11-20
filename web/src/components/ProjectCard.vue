@@ -16,7 +16,7 @@
       <p class="project-card__years" v-html="project.years" />
     </div>
 
-    <div class="col-12 project-card__content">
+    <div :class="['project-card__content', project.mainImage.layout]">
       <g-image
         :alt="project.mainImage.alt"
         v-if="project.mainImage"
