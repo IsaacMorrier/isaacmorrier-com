@@ -21,7 +21,7 @@
         :alt="project.mainImage.alt"
         v-if="project.mainImage"
         class="project-card__image"
-        :src="$urlForImage(project.mainImage, $page.metadata.sanityOptions).height(440).width(800).auto('format').url()"
+        :src="$urlForImage(project.mainImage, $page.metadata.sanityOptions).auto('format').url()"
       />
       <g-link class="project-card__link" :to="project.slug.current">Link</g-link>
     </div>

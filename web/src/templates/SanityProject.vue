@@ -89,6 +89,7 @@ query Project ($id: ID!) {
       asset {
         _id
         url
+        originalFilename
       }
       caption
       alt

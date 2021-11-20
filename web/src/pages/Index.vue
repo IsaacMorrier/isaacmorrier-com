@@ -43,6 +43,7 @@
           asset {
             _id
             url
+            originalFilename
           }
           caption
           alt
