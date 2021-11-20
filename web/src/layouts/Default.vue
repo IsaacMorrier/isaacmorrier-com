@@ -46,7 +46,6 @@
 <style>
     .fade-enter-active {
         transition: opacity .5s;
-        transition-delay: .6s;
     }
     .fade-leave-active {
         transition: opacity .5s;
