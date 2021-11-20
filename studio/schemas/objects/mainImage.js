@@ -12,7 +12,8 @@ export default {
       title: 'Filename',
       options: {
         isHighlighted: true
-      }
+      },
+      initialValue: 'asset.originalFilename',
     },
     {
       name: 'caption',
@@ -57,7 +58,7 @@ export default {
   ],
   preview: {
     select: {
-      filename: 'asset.originalFilename',
+      filename: 'filename',
       imageUrl: 'asset.url',
       caption: 'caption',
       alt: 'alt',
