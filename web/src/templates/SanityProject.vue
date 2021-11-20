@@ -67,48 +67,26 @@ export default {
 </script>
 
 <page-query>
-query Project ($id: ID!) {
-  metadata {
-    sanityOptions {
-      projectId
-      dataset
+  query Project ($id: ID!) {
+    metadata {
+      sanityOptions {
+        projectId
+        dataset
+      }
     }
-  }
-  project: sanityProject (id: $id) {
-    title
-    subtitle
-    years
-    publishedAt (format: "D. MMMM YYYY")
-    categories {
-      id
+    project: sanityProject (id: $id) {
       title
-    }
-    _rawExcerpt
-    _rawBody
-    mainImage {
-      asset {
-        _id
-        url
-        originalFilename
+      subtitle
+      years
+      publishedAt (format: "D. MMMM YYYY")
+      categories {
+        id
+        title
       }
-      caption
-      alt
-      layout
-      hotspot {
-        x
-        y
-        height
-        width
-      }
-      crop {
-        top
-        bottom
-        left
-        right
-      }
+      _rawExcerpt
+      _rawBody
     }
   }
-}
 </page-query>
 
 <style lang="scss">

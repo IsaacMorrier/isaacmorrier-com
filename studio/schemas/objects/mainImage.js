@@ -1,3 +1,6 @@
+import sanityClient from 'part:@sanity/base/client'
+const client = sanityClient.withConfig({apiVersion: '2021-03-25'})
+
 export default {
   name: 'mainImage',
   type: 'image',
@@ -6,6 +9,20 @@ export default {
     hotspot: true
   },
   fields: [
+    {
+      name: "filename",
+      type: "slug",
+      title: "Filename",
+      options: {
+          isHighlighted: true,
+          source: async (docs, options) => {
+            const parent = options.parent.asset
+            const fileName = await client.fetch(`*[_type == 'sanity.imageAsset' && _id == $parentId][0].originalFilename`, { parentId: parent._ref})
+            return fileName
+        },
+        slugify: source => source
+      },
+    },
     {
       name: 'caption',
       type: 'string',
@@ -49,7 +66,7 @@ export default {
   ],
   preview: {
     select: {
-      filename: 'asset.originalFilename',
+      filename: 'filename',
       imageUrl: 'asset.url',
       caption: 'caption',
       alt: 'alt',
