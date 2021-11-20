@@ -17,11 +17,12 @@
     </div>
 
     <div :class="['project-card__content', project.mainImage.layout]">
+      <p>{{project.mainImage.asset.originalFilename}}</p>
       <g-image
         :alt="project.mainImage.alt"
         v-if="project.mainImage"
         class="project-card__image"
-        :src="$urlForImage(project.mainImage, $page.metadata.sanityOptions).auto('format').url()"
+        :src="src"
       />
       <g-link class="project-card__link" :to="project.slug.current">Link</g-link>
     </div>
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import urlForImage from '~/utils/urlForImage.js'
 import ProjectMeta from '~/components/ProjectMeta'
 import ProjectTags from '~/components/ProjectTags'
 import BlockContent from '~/components/BlockContent'
@@ -42,6 +44,16 @@ export default {
   },
   props: {
     project: Object
+  },
+  computed: {
+    src() {
+      const image = this.project.mainImage
+      const options = this.$page.metadata.sanityOptions
+      const url = urlForImage(image, options).url()
+      const params = urlForImage(image, options).auto('format').url().replace(url, '')
+      const src = url + '/' + image.asset.originalFilename + params
+      return src 
+    }
   }
 }
 </script>

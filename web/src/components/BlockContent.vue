@@ -24,9 +24,22 @@ export default {
           mainImage: ({ node }) => (
             <figure class={node.layout}>
               <img
-                src={this.$urlForImage(node, this.$static.metadata.sanityOptions)
+                src={
+                  this.$urlForImage(node, this.$static.metadata.sanityOptions)
+                  .url()
+                  +
+                  '/'
+                  +
+                  node.filename
+                  +
+                  this.$urlForImage(node, this.$static.metadata.sanityOptions)
                   .auto('format')
-                  .url()}
+                  .url()
+                  .replace(
+                    this.$urlForImage(node, this.$static.metadata.sanityOptions).url(),
+                    ''
+                  )
+                }
                 alt={node.alt}
               />
               <figcaption>{node.caption}</figcaption>

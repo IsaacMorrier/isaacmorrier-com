@@ -7,6 +7,14 @@ export default {
   },
   fields: [
     {
+      name: 'filename',
+      type: 'string',
+      title: 'Filename',
+      options: {
+        isHighlighted: true
+      }
+    },
+    {
       name: 'caption',
       type: 'string',
       title: 'Caption',
@@ -49,16 +57,17 @@ export default {
   ],
   preview: {
     select: {
+      filename: 'asset.originalFilename',
       imageUrl: 'asset.url',
       caption: 'caption',
       alt: 'alt',
       layout: 'layout'
     },
     prepare(selection) {
-      const {imageUrl, layout, caption, alt} = selection
+      const {filename, imageUrl, layout, caption, alt} = selection
       return {
         imageUrl: imageUrl,
-        title: caption ? `${layout + ' — ' + caption}` : layout,
+        title: caption ? `${filename + ' | ' + layout + ' | ' + caption}` : filename + ' | ' + layout,
         subtitle: alt
       }
     }
