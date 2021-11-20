@@ -30,7 +30,7 @@ export default {
                   +
                   '/'
                   +
-                  node.filename
+                  node.filename.current
                   +
                   this.$urlForImage(node, this.$static.metadata.sanityOptions)
                   .auto('format')

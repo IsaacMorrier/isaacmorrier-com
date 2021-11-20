@@ -17,7 +17,6 @@
     </div>
 
     <div :class="['project-card__content', project.mainImage.layout]">
-      <p>{{project.mainImage.asset.originalFilename}}</p>
       <g-image
         :alt="project.mainImage.alt"
         v-if="project.mainImage"
@@ -51,7 +50,7 @@ export default {
       const options = this.$page.metadata.sanityOptions
       const url = urlForImage(image, options).url()
       const params = urlForImage(image, options).auto('format').url().replace(url, '')
-      const src = url + '/' + image.asset.originalFilename + params
+      const src = url + '/' + image.filename.current + params
       return src 
     }
   }

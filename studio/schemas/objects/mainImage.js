@@ -66,7 +66,7 @@ export default {
   ],
   preview: {
     select: {
-      filename: 'filename',
+      filename: 'filename.current',
       imageUrl: 'asset.url',
       caption: 'caption',
       alt: 'alt',

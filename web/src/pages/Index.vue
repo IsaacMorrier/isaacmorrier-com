@@ -37,29 +37,17 @@
           id
           title
         }
-        publishedAt(format: "D. MMMM YYYY")
-        _rawExcerpt
         mainImage {
+          alt
           asset {
             _id
             url
-            originalFilename
+          }
+          filename {
+            current
           }
           caption
-          alt
           layout
-          hotspot {
-            x
-            y
-            height
-            width
-          }
-          crop {
-            top
-            bottom
-            left
-            right
-          }
         }
       }
     }
