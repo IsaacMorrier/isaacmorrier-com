@@ -6,7 +6,7 @@
       <project-meta :project="$page.project" v-if="$page.project" />
     </div>
 
-    <div class="project content-box">
+    <div class="project">
       <div class="project__header">
         <img
           alt="Cover image"

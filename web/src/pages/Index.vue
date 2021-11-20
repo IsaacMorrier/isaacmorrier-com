@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <button v-on:click="testMethod($page.settings.subtitle)">Test Button</button> -->
-    <div class="projects">
+    <div class="projects grid-container">
       <project-card
         v-for="edge in $page.projects.edges"
         :key="edge.node.id"
@@ -28,6 +28,8 @@
       node {
         id
         title
+        subtitle
+        years
         slug {
           current
         }

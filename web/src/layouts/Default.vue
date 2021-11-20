@@ -3,11 +3,11 @@
         <header class="grid-container">
             <div class="row grid-padding">
                 <div class="col-2 hidden-lg-down">back</div>
-                <div class="col-7">
+                <div class="col-7 col-lg-3">
                     <header-logo />
                 </div>
 
-                <div class="col-2 col-offset-3">
+                <div class="col-2 col-offset-3 col-lg-offset-5">
                     <g-link to="/info">info</g-link>
                     <!-- <toggle-theme /> -->
                 </div>

@@ -6,7 +6,7 @@
       <post-meta :post="$page.post" v-if="$page.post" />
     </div>
 
-    <div class="post content-box">
+    <div class="post">
       <div class="post__header">
         <img
           alt="Cover image"
