@@ -1,29 +1,32 @@
 <template>
-  <div>
-    <div class="project-title">
-      <h1 class="project-title__text">{{ $page.project.title }}</h1>
+  <div class="grid-container">
+    <div class="row grid-padding">
+        
+      <div class="col-3 col-lg-2">
+        <h1 class="project__title" v-html="$page.project.title" />
+        <block-content :blocks="$page.project._rawExcerpt" />
+      </div>
 
-      <project-meta :project="$page.project" v-if="$page.project" />
+      <div class="col-7 col-lg-3">
+        <p class="project__subtitle" v-html="$page.project.subtitle" />
+        <!-- <project-meta class="project-card__meta" :project="project" /> -->
+        <!-- <project-tags class="project-card__tags" :project="project" /> -->
+      </div>
+
+      <div class="col-2 col-lg-2 col-lg-offset-5">
+        <p class="project__years" v-html="$page.project.years" />
+      </div>
+
     </div>
 
-    <div class="project">
-      <div class="project__header">
-        <img
-          alt="Cover image"
-          v-if="$page.project.mainImage"
-          :src="$urlForImage($page.project.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
-        />
-      </div>
+    <block-content
+      class="project__content row grid-padding"
+      :blocks="$page.project._rawBody"
+      v-if="$page.project._rawBody"
+    />
 
-      <block-content
-        class="project__content"
-        :blocks="$page.project._rawBody"
-        v-if="$page.project._rawBody"
-      />
-
-      <div class="project__footer">
-        <project-tags :project="$page.project" v-if="$page.project" />
-      </div>
+    <div class="project__footer">
+      <project-tags :project="$page.project" v-if="$page.project" />
     </div>
 
   </div>
@@ -73,6 +76,8 @@ query Project ($id: ID!) {
   }
   project: sanityProject (id: $id) {
     title
+    subtitle
+    years
     publishedAt (format: "D. MMMM YYYY")
     categories {
       id
@@ -87,6 +92,7 @@ query Project ($id: ID!) {
       }
       caption
       alt
+      layout
       hotspot {
         x
         y
@@ -105,40 +111,15 @@ query Project ($id: ID!) {
 </page-query>
 
 <style lang="scss">
-.project-title {
-  padding: calc(var(--space) / 2) 0 calc(var(--space) / 2);
-  text-align: center;
-}
 
 .project {
-  &__header {
-    width: calc(100% + var(--space) * 2);
-    margin-left: calc(var(--space) * -1);
-    margin-top: calc(var(--space) * -1);
-    margin-bottom: calc(var(--space) / 2);
-    overflow: hidden;
-    border-radius: var(--radius) var(--radius) 0 0;
-
-    img {
-      width: 100%;
-    }
-
-    &:empty {
-      display: none;
-    }
+  &__title {
+    font-size: 100%;
+    margin-bottom: 1em;
   }
-
-  &__content {
-    h2:first-child {
-      margin-top: 0;
-    }
-
-    img {
-      width: calc(100% + var(--space) * 2);
-      margin-left: calc(var(--space) * -1);
-      display: block;
-      max-width: none;
-    }
+  &__subtitle,
+  &__years {
+    color: var(--alt-text-color)
   }
 }
 

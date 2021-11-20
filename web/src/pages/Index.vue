@@ -46,6 +46,7 @@
           }
           caption
           alt
+          layout
           hotspot {
             x
             y

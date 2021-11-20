@@ -23,6 +23,23 @@ export default {
       options: {
         isHighlighted: true
       }
+    },
+    {
+      name: 'layout',
+      type: 'string',
+      title: 'Layout',
+      options: {
+        list: [
+          {title: 'Full-width', value: 'full'},
+          {title: 'Half-width', value: 'half'},
+          {title: 'Half-width, offset', value: 'offset'},
+          {title: 'Half-width, centered', value: 'centered'},
+        ],
+        layout: 'radio',
+        isHighlighted: true
+      },
+      initialValue: 'full'
+
     }
   ],
   preview: {

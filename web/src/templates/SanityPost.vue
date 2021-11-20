@@ -93,6 +93,7 @@ query Post ($id: ID!) {
       }
       caption
       alt
+      layout
       hotspot {
         x
         y

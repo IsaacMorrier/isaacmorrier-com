@@ -22,7 +22,7 @@ export default {
       serializers: {
         types: {
           mainImage: ({ node }) => (
-            <figure>
+            <figure class={node.layout}>
               <img
                 src={this.$urlForImage(node, this.$static.metadata.sanityOptions)
                   .auto('format')
