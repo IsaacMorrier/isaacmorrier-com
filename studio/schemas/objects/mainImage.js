@@ -50,7 +50,17 @@ export default {
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'caption'
+      caption: 'caption',
+      alt: 'alt',
+      layout: 'layout'
+    },
+    prepare(selection) {
+      const {imageUrl, layout, caption, alt} = selection
+      return {
+        imageUrl: imageUrl,
+        title: caption ? `${layout + ' — ' + caption}` : layout,
+        subtitle: alt
+      }
     }
   }
 }
