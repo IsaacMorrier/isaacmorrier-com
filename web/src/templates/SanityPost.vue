@@ -90,8 +90,8 @@ query Post ($id: ID!) {
       asset {
         _id
         url
+        originalFilename
       }
-      filename
       caption
       alt
       layout

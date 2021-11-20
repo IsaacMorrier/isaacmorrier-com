@@ -43,10 +43,10 @@
           asset {
             _id
             url
+            originalFilename
           }
           caption
           alt
-          filename
           layout
           hotspot {
             x
