@@ -61,6 +61,7 @@ export default {
 
 .project-card {
   position: relative;
+  margin-bottom: 5rem;
 
   &__content {
     margin-top: .625rem;

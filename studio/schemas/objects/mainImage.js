@@ -53,9 +53,9 @@ export default {
           {title: 'Half-width', value: 'col-6'},
           {title: 'Half-width desktop, full-width mobile', value: 'col-12 col-md-6'},
           {title: 'Half-width offset', value: 'col-6 col-offset-6'},
-          {title: 'Half-width offset desktop, full-width mobile', value: 'col-12 col-md-6 col-offset-md-6'},
+          {title: 'Half-width offset desktop, full-width mobile', value: 'col-12 col-md-6 col-md-offset-6'},
           {title: 'Half-width centered', value: 'col-6 col-offset-3'},
-          {title: 'Half-width centered desktop, full-width mobile', value: 'col-12 col-md-6 col-offset-md-3'},
+          {title: 'Half-width centered desktop, full-width mobile', value: 'col-12 col-md-6 col-md-offset-3'},
         ],
         layout: 'radio',
         isHighlighted: true
