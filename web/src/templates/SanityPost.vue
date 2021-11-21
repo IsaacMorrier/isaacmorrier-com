@@ -87,26 +87,16 @@ query Post ($id: ID!) {
     _rawExcerpt
     _rawBody
     mainImage {
+      alt
       asset {
         _id
         url
-        originalFilename
+      }
+      filename {
+        current
       }
       caption
-      alt
       layout
-      hotspot {
-        x
-        y
-        height
-        width
-      }
-      crop {
-        top
-        bottom
-        left
-        right
-      }
     }
   }
 }

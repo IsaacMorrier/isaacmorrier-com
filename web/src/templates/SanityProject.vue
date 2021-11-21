@@ -4,7 +4,6 @@
         
       <div class="col-3 col-lg-2">
         <h1 class="project__title" v-html="$page.project.title" />
-        <block-content :blocks="$page.project._rawExcerpt" />
       </div>
 
       <div class="col-7 col-lg-3">
@@ -25,11 +24,34 @@
       v-if="$page.project._rawBody"
     />
 
-    <div class="project__footer">
-      <project-tags :project="$page.project" v-if="$page.project" />
-    </div>
+    <!-- <div class="row grid-padding">
+
+      <div class="col-3 col-lg-2">
+        <h2 class="project__title" v-html="$page.next.title" />
+      </div>
+
+      <div class="col-7 col-lg-3">
+        <p class="project__subtitle" v-html="$page.next.subtitle" />
+      </div>
+
+      <div class="col-2 col-lg-2 col-lg-offset-5">
+        <p class="project__years" v-html="$page.next.years" />
+      </div>
+
+      <div :class="['project-card__content', $page.next.mainImage.layout]">
+        <g-image
+          :alt="$page.next.mainImage.alt"
+          v-if="$page.next.mainImage"
+          class="project-card__image"
+          :src="src"
+        />
+        <g-link class="project-card__link" :to="$page.next.slug.current">Link</g-link>
+      </div>
+
+    </div> -->
 
   </div>
+
 </template>
 
 <script>
@@ -60,6 +82,16 @@ export default {
       this.$store.commit('setSubtitle', subtitle)
     }
   },
+  // computed: {
+  //   src() {
+  //     const image = this.next.mainImage
+  //     const options = this.$page.metadata.sanityOptions
+  //     const url = urlForImage(image, options).url()
+  //     const params = urlForImage(image, options).auto('format').url().replace(url, '')
+  //     const src = url + '/' + image.filename.current + params
+  //     return src
+  //   }
+  // },
   beforeMount(){
     this.commitSubtitle(' → ' + this.$page.project.title)
   }
@@ -78,7 +110,6 @@ export default {
       title
       subtitle
       years
-      publishedAt (format: "D. MMMM YYYY")
       categories {
         id
         title
@@ -99,6 +130,9 @@ export default {
   &__subtitle,
   &__years {
     color: var(--alt-text-color)
+  }
+  &__content {
+    margin-top: .625rem;
   }
 }
 

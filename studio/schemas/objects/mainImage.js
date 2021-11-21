@@ -54,6 +54,8 @@ export default {
           {title: 'Half-width desktop, full-width mobile', value: 'col-12 col-md-6'},
           {title: 'Half-width offset', value: 'col-6 col-offset-6'},
           {title: 'Half-width offset desktop, full-width mobile', value: 'col-12 col-md-6 col-md-offset-6'},
+          {title: 'Half-width trailing space', value: 'col-6 col-push-6'},
+          {title: 'Half-width trailing space desktop, full-width mobile', value: 'col-12 col-md-6 col-md-push-6'},
           {title: 'Half-width centered', value: 'col-6 col-offset-3'},
           {title: 'Half-width centered desktop, full-width mobile', value: 'col-12 col-md-6 col-md-offset-3'},
         ],

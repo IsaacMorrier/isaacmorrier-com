@@ -67,6 +67,9 @@ $map-grid-props: (
       .col#{$modifier}-offset-#{$i} {
         margin-left: math.div(100, (math.div($cols, $i) ) ) * 1%;
       }
+      .col#{$modifier}-push-#{$i} {
+        margin-right: math.div(100, (math.div($cols, $i) ) ) * 1%;
+      }
     }
   }
 }
