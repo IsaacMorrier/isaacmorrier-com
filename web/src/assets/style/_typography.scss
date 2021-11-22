@@ -21,6 +21,9 @@ body {
     @extend .col-md-8;
     @extend .col-md-offset-2;
     @extend .col-xl-offset-1;
+    @extend .col-xl-7;
+    @extend .col-xxl-6;
+    @extend .col-xxl-offset-2;
   }
   p:first-child,
   p:nth-child(2) {

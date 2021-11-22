@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="grid-container">
     <block-content
       class="body-content row grid-padding"
       :blocks="$page.settings.author._rawBio"

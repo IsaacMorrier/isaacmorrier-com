@@ -42,7 +42,8 @@ $map-grid-props: (
     '': 0,
     '-md': $breakpoint-md,
     '-lg': $breakpoint-lg,
-    '-xl': $breakpoint-xl
+    '-xl': $breakpoint-xl,
+    '-xxl': $breakpoint-xxl
 );
 
 @mixin create-mq($breakpoint, $min-or-max) {
