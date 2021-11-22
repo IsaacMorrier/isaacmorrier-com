@@ -34,7 +34,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({ x: 0, y: 0 })
-      }, 650)
+      }, 700)
     })
   }
 
