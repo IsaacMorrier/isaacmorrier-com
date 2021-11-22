@@ -1,54 +1,47 @@
 <template>
-    <div>
-        <header class="grid-container">
-            <div class="row grid-padding">
-                <div class="col-2 hidden-lg-down">back</div>
-                <div class="col-7 col-lg-3">
-                    <header-logo />
-                </div>
-
-                <div class="col-2 col-offset-3 col-lg-offset-5">
-                    <g-link to="/info">info</g-link>
-                    <!-- <toggle-theme /> -->
-                </div>
-            </div>
-        </header>
-
-        <main class="main">
+        <div>
             <transition name="fade" mode="out-in">
-                <slot />
+                <header-nav :key="headerKey"/>
             </transition>
-        </main>
 
-        <footer class="grid-container">
-            <div class="row grid-padding">
-                <div class="col-12">
-                    <p>© Isaac Morrier {{ new Date().getFullYear() }}</p>
-                </div>
-                    
-            </div>
-        </footer>
-    </div>
+            <main class="main">
+                <transition name="fade" mode="out-in" v-on:before-leave="beforeLeave">
+                    <slot />
+                </transition>
+            </main>
+        </div>
 </template>
 
 <script>
-    import HeaderLogo from '~/components/HeaderLogo'
+    import HeaderNav from '~/components/HeaderNav'
     // import ToggleTheme from '~/components/ToggleTheme'
 
     export default {
+        data() {
+            return {
+                headerKey: 0
+            }
+        },
         components: {
-            HeaderLogo,
+            HeaderNav,
             // ToggleTheme
+        },
+        methods: {
+            beforeLeave: function(el) {
+                if (window.scrollY > 1) {
+                    this.headerKey += 1;
+                }
+            }
         }
     }
 </script>
 
 <style>
     .fade-enter-active {
-        transition: opacity .5s;
+        transition: opacity .75s;
     }
     .fade-leave-active {
-        transition: opacity .5s;
+        transition: opacity .75s;
     }
     .fade-enter, .fade-leave-to {
         opacity: 0;

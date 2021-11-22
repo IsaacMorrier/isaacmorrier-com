@@ -1,18 +1,18 @@
 <template>
   <div class="project-card row grid-padding">
       
-    <div class="col-3 col-lg-2">
+    <div class="col-10 col-md-2 col-xl-1">
       <h2 class="project-card__title" v-html="project.title" />
     </div>
 
-    <div class="col-7 col-lg-3">
+    <div class="col-9 col-md-3">
       <p class="project-card__subtitle" v-html="project.subtitle" />
       <!-- <block-content :blocks="project._rawExcerpt" /> -->
       <!-- <project-meta class="project-card__meta" :project="project" /> -->
       <!-- <project-tags class="project-card__tags" :project="project" /> -->
     </div>
 
-    <div class="col-2 col-lg-2 col-lg-offset-5">
+    <div class="col-2 col-offset-1 col-md-offset-5 col-xl-offset-6">
       <p class="project-card__years" v-html="project.years" />
     </div>
 

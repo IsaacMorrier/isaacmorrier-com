@@ -2,18 +2,15 @@
   <div class="grid-container">
     <div class="row grid-padding">
         
-      <div class="col-3 col-lg-2">
-        <h1 class="project__title" v-html="$page.project.title" />
+      <div class="col-2 col-xl-1">
       </div>
 
-      <div class="col-7 col-lg-3">
-        <p class="project__subtitle" v-html="$page.project.subtitle" />
-        <!-- <project-meta class="project-card__meta" :project="project" /> -->
-        <!-- <project-tags class="project-card__tags" :project="project" /> -->
+      <div class="col-7 col-md-3">
+        <block-content :blocks="$page.project._rawExcerpt" />
       </div>
 
       <div class="col-2 col-lg-2 col-lg-offset-5">
-        <p class="project__years" v-html="$page.project.years" />
+        <!-- <p class="project__years" v-html="$page.project.years" /> -->
       </div>
 
     </div>
@@ -23,6 +20,16 @@
       :blocks="$page.project._rawBody"
       v-if="$page.project._rawBody"
     />
+
+    <div class="row grid-padding">
+      <div class="col-2 col-xl-1">
+      </div>
+      <div class="col-7 col-md-3">
+          <p>© Isaac Morrier {{ new Date().getFullYear() }}</p>
+      </div>
+    </div>
+
+      
 
     <!-- <div class="row grid-padding">
 
@@ -93,7 +100,7 @@ export default {
   //   }
   // },
   beforeMount(){
-    this.commitSubtitle(' → ' + this.$page.project.title)
+    this.commitSubtitle(this.$page.project.title)
   }
 }
 </script>

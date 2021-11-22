@@ -47,8 +47,8 @@ export default {
       title: 'Layout',
       options: {
         list: [
-          {title: 'Front Page Full-width', value: 'col-10'},
-          {title: 'Front Page Half-width', value: 'col-5'},
+          {title: 'Front Page Full-width', value: 'col-12 col-md-10 col-md-offset-2 col-xl-9 col-xl-offset-1'},
+          {title: 'Front Page Half-width', value: 'col-6 col-md-5 col-md-offset-2 col-xl-4 col-xl-offset-1'},
           {title: 'Full-width', value: 'col-12'},
           {title: 'Half-width', value: 'col-6'},
           {title: 'Half-width desktop, full-width mobile', value: 'col-12 col-md-6'},

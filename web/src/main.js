@@ -30,6 +30,14 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 
   Vue.prototype.$urlForImage = urlForImage
 
+  router.options.scrollBehavior = function (to, from, savedPosition) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 750)
+    })
+  }
+
   // Add Adobe Fonts
   head.link.push({
     rel: 'stylesheet',
