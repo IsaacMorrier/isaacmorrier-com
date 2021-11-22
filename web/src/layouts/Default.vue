@@ -38,10 +38,10 @@
 
 <style>
     .fade-enter-active {
-        transition: opacity .75s;
+        transition: opacity .7s;
     }
     .fade-leave-active {
-        transition: opacity .75s;
+        transition: opacity .7s;
     }
     .fade-enter, .fade-leave-to {
         opacity: 0;
