@@ -20,11 +20,11 @@
     />
 
     <div class="row grid-padding">
-      <div class="col-5 col-lg-10">
-          <p>next:</p>
-      </div>
-      <div class="col-7 col-lg-2">
+      <div class="col-10">
           <p class="footer__copyright">© Isaac Morrier {{ new Date().getFullYear() }}</p>
+      </div>
+      <div class="col-2">
+          <p>next:</p>
       </div>
     </div>
 
@@ -161,7 +161,6 @@ export default {
 </page-query>
 
 <style lang="scss">
-@import '~/assets/style/_utils.scss';
 
 .project {
   &__title {
@@ -174,13 +173,6 @@ export default {
   }
   &__content {
     margin-top: .625rem;
-  }
-}
-
-.footer__copyright {
-  text-align: right;
-  @include breakpoint(lg) {
-    text-align: left;
   }
 }
 
