@@ -14,7 +14,6 @@
 
 <script>
     import HeaderNav from '~/components/HeaderNav'
-    // import ToggleTheme from '~/components/ToggleTheme'
 
     export default {
         data() {
@@ -24,7 +23,6 @@
         },
         components: {
             HeaderNav,
-            // ToggleTheme
         },
         methods: {
             beforeLeave: function(el) {

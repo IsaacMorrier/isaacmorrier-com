@@ -21,7 +21,6 @@
 
           <div class="col-2 col-offset-1 col-md-offset-5 col-xl-1 col-xl-offset-6">
               <g-link to="/info">info</g-link>
-              <!-- <toggle-theme /> -->
           </div>
 
       </div>
