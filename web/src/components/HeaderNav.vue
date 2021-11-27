@@ -4,7 +4,7 @@
           <div class="col-2 col-xl-1">
             <g-link to="/" class="logo__container">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                <desc>{{title}}</desc>
+                <desc>Isaac Morrier</desc>
                 <path d="M16,32A16,16,0,1,1,32,16,16.019,16.019,0,0,1,16,32ZM16,2A14,14,0,1,0,30,16,14.015,14.015,0,0,0,16,2Z"/>
                 <path d="M6,16V14H9V10H6V8.008h8V10H11v4h3v2Z"/>
                 <polygon points="24.104 8 21.516 10.831 18.928 8 17.001 8 17.001 16 19.001 16 19.001 11.043 21.516 13.794 24.001 11.076 24.001 16 26 16 26 8 24.104 8"/>
@@ -32,7 +32,6 @@
 <static-query>
 query {
   settings: sanitySiteSettings(id: "siteSettings") {
-    title
     subtitle
   }
 }

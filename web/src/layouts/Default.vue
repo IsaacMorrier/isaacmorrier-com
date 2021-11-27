@@ -30,6 +30,7 @@
             beforeLeave: function(el) {
                 if (window.scrollY > 1) {
                     this.headerKey += 1;
+                    window.alert("fired")
                 }
             }
         }

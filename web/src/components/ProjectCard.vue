@@ -7,9 +7,6 @@
 
     <div class="col-9 col-md-3">
       <p class="project-card__subtitle" v-html="project.subtitle" />
-      <!-- <block-content :blocks="project._rawExcerpt" /> -->
-      <!-- <project-meta class="project-card__meta" :project="project" /> -->
-      <!-- <project-tags class="project-card__tags" :project="project" /> -->
     </div>
 
     <div class="col-2 col-offset-1 col-md-offset-5 col-xl-offset-6">
