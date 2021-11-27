@@ -28,14 +28,10 @@
 
 <script>
 import urlForImage from '~/utils/urlForImage.js'
-import ProjectMeta from '~/components/ProjectMeta'
-import ProjectTags from '~/components/ProjectTags'
 import BlockContent from '~/components/BlockContent'
 
 export default {
   components: {
-    ProjectMeta,
-    ProjectTags,
     BlockContent
   },
   props: {
@@ -58,7 +54,6 @@ export default {
 
 .project-card {
   position: relative;
-  margin-bottom: 5rem;
 
   &__content {
     margin-top: .625rem;
@@ -79,11 +74,6 @@ export default {
   &__subtitle,
   &__years {
     color: var(--alt-text-color)
-  }
-
-  &__tags {
-    z-index: 1;
-    position: relative;
   }
 
   &__link {

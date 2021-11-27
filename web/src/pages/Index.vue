@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <button v-on:click="testMethod($page.settings.subtitle)">Test Button</button> -->
     <div class="projects grid-container">
       <project-card
         v-for="edge in $page.projects.edges"
@@ -32,10 +31,6 @@
         years
         slug {
           current
-        }
-        categories {
-          id
-          title
         }
         mainImage {
           alt

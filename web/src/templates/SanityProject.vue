@@ -1,5 +1,12 @@
 <template>
   <div class="grid-container">
+
+    <project-card
+        :key="$page.project.id"
+        :project="$page.project"
+        :metadata="$page.metadata"
+      />
+    
     <div class="row grid-padding">
       <div class="col-7 col-offset-2 col-md-3 col-xl-offset-1">
         <block-content :blocks="$page.project._rawExcerpt" />
@@ -21,33 +28,11 @@
       </div>
     </div>
 
-      
-
-    <div class="project-card row grid-padding">
-
-      <div class="col-3 col-lg-2">
-        <h2 class="project-card__title" v-html="next.title" />
-      </div>
-
-      <div class="col-7 col-lg-3">
-        <p class="project-card__subtitle" v-html="next.subtitle" />
-      </div>
-
-      <div class="col-2 col-lg-2 col-lg-offset-5">
-        <p class="project-card__years" v-html="next.years" />
-      </div>
-
-      <div :class="['project-card__content', next.mainImage.layout]">
-        <g-image
-          :alt="next.mainImage.alt"
-          v-if="next.mainImage"
-          class="project-card__image"
-          :src="next.src"
-        />
-        <g-link class="project-card__link" :to="next.slug.current">Link</g-link>
-      </div>
-
-    </div>
+    <project-card
+        :key="next.id"
+        :project="next"
+        :metadata="next.metadata"
+      />
 
   </div>
 
@@ -55,15 +40,13 @@
 
 <script>
 import urlForImage from '~/utils/urlForImage.js'
+import ProjectCard from '~/components/ProjectCard'
 import BlockContent from '~/components/BlockContent'
-import ProjectMeta from '~/components/ProjectMeta'
-import ProjectTags from '~/components/ProjectTags'
 
 export default {
   name: "Project",
   components: {
-    ProjectMeta,
-    ProjectTags,
+    ProjectCard,
     BlockContent
   },
   metaInfo() {
@@ -127,10 +110,21 @@ export default {
       title
       subtitle
       years
-      categories {
-        id
-        title
+      slug {
+        current
       }
+      mainImage {
+          alt
+          asset {
+            _id
+            url
+          }
+          filename {
+            current
+          }
+          caption
+          layout
+        }
       _rawExcerpt
       _rawBody
     }
