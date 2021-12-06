@@ -1,15 +1,15 @@
 <template>
-  <div class="project-card row grid-padding">
+  <div class="project-card">
       
-    <div class="col-10 col-md-2 col-xl-1">
+    <div class="project-card__title-container">
       <h2 class="project-card__title" v-html="project.title" />
     </div>
 
-    <div class="col-9 col-md-3">
+    <div class="project-card__subtitle-container">
       <p class="project-card__subtitle" v-html="project.subtitle" />
     </div>
 
-    <div class="col-2 col-offset-1 col-md-offset-5 col-xl-offset-6">
+    <div class="project-card__years-container">
       <p class="project-card__years" v-html="project.years" />
     </div>
 
@@ -51,8 +51,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~/assets/style/_utils.scss";
 
 .project-card {
+  @extend .row;
+  @extend .grid-padding;
   position: relative;
 
   &__content {
@@ -67,8 +70,20 @@ export default {
     min-width: 100%;
   }
 
+  &__title-container {
+    @extend .col-10, .col-md-2, .col-xl-1;
+  }
+
   &__title {
     font-size: 100%;
+  }
+
+  &__years-container {
+    @extend .col-2, .col-offset-1, .col-md-offset-5, .col-xl-offset-6;
+  }
+
+  &__subtitle-container {
+    @extend .col-9, .col-md-3;
   }
 
   &__subtitle,

@@ -24,20 +24,6 @@ img {
 	max-width: 100%;
 }
 
-header {
-	height: rem-calc(150);
-	& .row > div {
-		padding-top: $global-gutter;
-		@include breakpoint(lg) {
-			padding-top: $global-gutter-lg;
-		}
-	}
-	& a {
-		color: var(--body-color);
-		text-decoration: none;
-	}
-}
-
 figure {
 	padding-bottom: ($global-gutter * .5);
 	@include breakpoint(lg) {

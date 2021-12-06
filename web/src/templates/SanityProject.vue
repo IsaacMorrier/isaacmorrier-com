@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-container" :key="this.$store.state.page">
+  <div class="project" :key="this.$store.state.page">
 
     <project-card
         :key="$page.project.id"
@@ -7,23 +7,23 @@
         :metadata="$page.metadata"
       />
     
-    <div class="row grid-padding">
-      <div class="col-7 col-offset-2 col-md-3 col-xl-offset-1">
+    <div class="project__excerpt">
+      <div class="project__excerpt-container">
         <block-content :blocks="$page.project._rawExcerpt" />
       </div>
     </div>
 
     <block-content
-      class="project__content row grid-padding"
+      class="project__content"
       :blocks="$page.project._rawBody"
       v-if="$page.project._rawBody"
     />
 
-    <div class="row grid-padding">
-      <div class="col-10">
-          <p class="footer__copyright">© Isaac Morrier {{ new Date().getFullYear() }}</p>
+    <div class="project__footer">
+      <div class="project__footer-copyright-container">
+          <p>© Isaac Morrier {{ new Date().getFullYear() }}</p>
       </div>
-      <div class="col-2">
+      <div class="project__footer-text-container">
           <p>next:</p>
       </div>
     </div>
@@ -161,61 +161,31 @@ export default {
 </page-query>
 
 <style lang="scss">
+@import '~/assets/style/_utils.scss';
 
 .project {
+  @extend .grid-container;
+  
+  &__excerpt {
+    @extend .row, .grid-padding;
+  }
+  &__excerpt-container {
+    @extend .col-7, .col-offset-2, .col-md-3, .col-xl-offset-1;
+  }
+  &__content,
+  &__footer {
+     @extend .row, .grid-padding;
+  }
+  &__footer-copyright-container {
+    @extend .col-12;
+    margin-bottom: 6rem;
+  }
+  &__footer-next-container {
+    @extend .col-12;
+  }
   &__title {
     font-size: 100%;
     margin-bottom: 1em;
-  }
-  &__subtitle,
-  &__years {
-    color: var(--alt-text-color)
-  }
-  &__content {
-    margin-top: .625rem;
-  }
-}
-
-.project-card {
-  position: relative;
-  margin-top: 10rem;
-
-  &__content {
-    margin-top: .625rem;
-
-    &:empty {
-      display: none;
-    }
-  }
-
-  &__image {
-    min-width: 100%;
-  }
-
-  &__title {
-    font-size: 100%;
-  }
-
-  &__subtitle,
-  &__years {
-    color: var(--alt-text-color)
-  }
-
-  &__tags {
-    z-index: 1;
-    position: relative;
-  }
-
-  &__link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    overflow: hidden;
-    text-indent: -9999px;
-    z-index: 0;
   }
 }
 </style>

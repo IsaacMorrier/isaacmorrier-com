@@ -1,5 +1,5 @@
 <template>
-  <div class="projects grid-container">
+  <div class="projects-list">
     <project-card
       v-for="edge in $page.projects.edges"
       :key="edge.node.id"
@@ -69,3 +69,14 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @import '~/assets/style/_utils.scss';
+
+  .projects-list {
+     @extend .grid-container;
+  &  .project-card {
+      margin-bottom: 6rem;
+    }
+  }
+</style>
