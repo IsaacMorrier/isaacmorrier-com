@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-container">
+  <div class="grid-container" :key="this.$store.state.page">
 
     <project-card
         :key="$page.project.id"
@@ -91,7 +91,7 @@ export default {
       return next
     }
   },
-  beforeMount(){
+  mounted(){
     this.commitSubtitle(this.$page.project.title)
   }
 }

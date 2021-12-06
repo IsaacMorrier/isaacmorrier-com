@@ -15,13 +15,17 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   appOptions.store = new Vuex.Store({
     plugins: [],
     state: {
+        page: '/',
         subtitle: '',
     },
     getters: {},
     actions: {},
     mutations: {
-        setSubtitle(state, payload) {
-            state.subtitle = payload;
+        setSubtitle(state, newSubtitle) {
+            state.subtitle = newSubtitle;
+        },
+        setPage(state, newPage) {
+          state.page = newPage;
         }
     }
   })
@@ -30,11 +34,17 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 
   Vue.prototype.$urlForImage = urlForImage
 
+  router.beforeEach((to, from, next) => {
+    appOptions.store.commit('setPage', to.path)
+    // window.alert(appOptions.store.state.page)
+    next()
+  })
+
   router.options.scrollBehavior = function (to, from, savedPosition) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({ x: 0, y: 0 })
-      }, 700)
+        resolve({ x: 0, y: 0, behavior: 'smooth' })
+      }, 0)
     })
   }
 

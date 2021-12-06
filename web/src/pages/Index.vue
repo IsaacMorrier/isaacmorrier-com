@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <div class="projects grid-container">
-      <project-card
-        v-for="edge in $page.projects.edges"
-        :key="edge.node.id"
-        :project="edge.node"
-        :metadata="$page.metadata"
-      />
-    </div>
+  <div class="projects grid-container">
+    <project-card
+      v-for="edge in $page.projects.edges"
+      :key="edge.node.id"
+      :project="edge.node"
+      :metadata="$page.metadata"
+    />
   </div>
 </template>
 
