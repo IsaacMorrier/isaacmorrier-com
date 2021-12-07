@@ -13,7 +13,7 @@
       <p class="project-card__years" v-html="project.years" />
     </div>
 
-    <div :class="['project-card__content', project.mainImage.layout]">
+    <figure :class="['project-card__content', project.mainImage.layout]">
       <g-image
         :alt="project.mainImage.alt"
         v-if="project.mainImage"
@@ -21,7 +21,7 @@
         :src="src"
       />
       <g-link class="project-card__link" :to="project.slug.current">Link</g-link>
-    </div>
+    </figure>
 
   </div>
 </template>

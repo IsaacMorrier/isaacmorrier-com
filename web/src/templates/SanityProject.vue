@@ -7,11 +7,11 @@
         :metadata="$page.metadata"
       />
     
-    <div class="project__excerpt">
+    <!-- <div class="project__excerpt">
       <div class="project__excerpt-container">
         <block-content :blocks="$page.project._rawExcerpt" />
       </div>
-    </div>
+    </div> -->
 
     <block-content
       class="project__content"
