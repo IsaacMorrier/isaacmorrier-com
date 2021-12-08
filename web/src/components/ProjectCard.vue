@@ -20,7 +20,7 @@
         class="project-card__image"
         :src="src"
       />
-      <g-link class="project-card__link" :to="project.slug.current">Link</g-link>
+      <g-link v-if="linked" class="project-card__link" :to="project.slug.current">Link</g-link>
     </figure>
 
   </div>
@@ -35,7 +35,11 @@ export default {
     BlockContent
   },
   props: {
-    project: Object
+    project: Object,
+    linked: {
+      default: true,
+      type: Boolean
+    }
   },
   computed: {
     src() {

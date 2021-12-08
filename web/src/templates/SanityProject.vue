@@ -5,6 +5,7 @@
         :key="$page.project.id"
         :project="$page.project"
         :metadata="$page.metadata"
+        :linked="false"
       />
     
     <!-- <div class="project__excerpt">
