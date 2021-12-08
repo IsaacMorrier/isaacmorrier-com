@@ -14,7 +14,7 @@
     </div> -->
 
     <block-content
-      class="project__content"
+      class="project__content body-content"
       :blocks="$page.project._rawBody"
       v-if="$page.project._rawBody"
     />
