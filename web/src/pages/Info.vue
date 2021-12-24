@@ -1,9 +1,21 @@
 <template>
   <div class="grid-container">
-    <block-content
-      class="body-content row grid-padding"
-      :blocks="$page.settings.author._rawBio"
-    />
+    <div class="row grid-padding">
+      <div class="main col-10">
+        <block-content
+          class="body-content row"
+          :blocks="$page.settings.author._rawBio"
+        />
+      </div>
+      <div class="sidebar col-2">
+        <div class="sidebar-content row">
+          <p class="col-12">
+            <a class="nav-link" href="https://instagram.com/isaacmorrier" target="_blank">instagram</a><br>
+            <a class="nav-link" href="https://linkedin.com/in/isaacmorrier" target="_blank">linkedin</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
