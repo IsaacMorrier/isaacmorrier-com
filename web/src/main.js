@@ -54,6 +54,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     href: 'https://use.typekit.net/ngl3ecq.css'
   })
 
+  // Add Favicons and App Icons
   head.link.push({
     rel: 'apple-touch-icon',
     sizes: '57x57',
