@@ -16,7 +16,12 @@ module.exports = {
   siteName: 'Isaac Morrier',
   siteDescription:
     'Explore the work of strategist, photographer, graphic designer, and artist Isaac Morrier.',
-
+  icon: {
+    favicon: {
+      src: './src/favicon.png',
+      sizes: [16, 32, 96]
+    }
+  },
   templates: {
     // SanityPost: '/:slug__current',
     SanityProject: '/:slug__current'
