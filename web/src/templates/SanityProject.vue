@@ -94,6 +94,9 @@ export default {
   },
   mounted(){
     this.commitSubtitle(this.$page.project.title)
+  },
+  updated(){
+    this.commitSubtitle(this.$page.project.title)
   }
 }
 </script>
