@@ -20,11 +20,8 @@
       v-if="$page.project._rawBody"
     />
 
-    <div class="project__footer">
-      <div class="project__footer-copyright-container">
-          <p>© Isaac Morrier {{ new Date().getFullYear() }}</p>
-      </div>
-      <div class="project__footer-text-container">
+    <div class="project__next">
+      <div class="project__next-text-container">
           <p>next:</p>
       </div>
     </div>
@@ -35,6 +32,17 @@
         :metadata="next.metadata"
       />
 
+    <div class="project__footer">
+      <div class="project__footer-nav-container">
+        <g-link to="/" class="nav-link">home</g-link>
+        <g-link to="/info" class="nav-link">info</g-link>
+        <a href="https://instagram.com/isaacmorrier" target="_blank" class="nav-link">instagram</a>
+        <a href="https://linkedin.com/in/isaacmorrier" target="_blank" class="nav-link">linkedin</a>
+      </div>
+      <div class="project__footer-copyright-container">
+          <p><span class="nav-link">© Isaac Morrier 2013&ndash;{{ new Date().getFullYear() }}</span></p>
+      </div>
+    </div>
   </div>
 
 </template>
@@ -177,15 +185,15 @@ export default {
     @extend .col-7, .col-offset-2, .col-md-3, .col-xl-offset-1;
   }
   &__content,
-  &__footer {
-     @extend .row, .grid-padding;
+  &__footer,
+  &__next {
+    @extend .row, .grid-padding;
   }
-  &__footer-copyright-container {
-    @extend .col-12;
+  &__footer-nav-container {
+    @extend .col-xxl-10
+  }
+  &__next-text-container {
     margin-bottom: 6rem;
-  }
-  &__footer-next-container {
-    @extend .col-12;
   }
   &__title {
     font-size: 100%;

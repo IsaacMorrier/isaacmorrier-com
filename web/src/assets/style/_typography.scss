@@ -15,18 +15,19 @@ body {
 }
 
 .body-content {
-  p, ol, ul, h1, h2, h3, h4, h5 {
+  p, ol, ul, h1, h2, h3, h4, h5, blockquote {
     @extend .col-12;
     @extend .col-md-8;
     @extend .col-md-offset-2;
     @extend .col-lg-7;
     @extend .col-xl-offset-1;
-    @extend .col-xl-6;
+    @extend .col-xl-7;
     @extend .col-xxl-5;
     @extend .col-xxl-offset-2;
   }
   p:first-child,
-  p:nth-child(2) {
+  p:nth-child(2),
+  blockquote {
     font-size: 2.25em;
     font-weight: 400;
     line-height: 1.25;
@@ -83,6 +84,7 @@ blockquote {
   border-left: 4px solid var(--border-color);
   padding-left: calc(var(--space) / 2);
   color: var(--title-color);
+  margin-bottom: .75em
 }
 
 em {
@@ -111,4 +113,8 @@ ol {
   text-decoration: none;
   display: inline-block;
   padding: .5rem 1rem .5rem 0;
+}
+
+span.nav-link {
+  color: var(--color-gray);
 }
