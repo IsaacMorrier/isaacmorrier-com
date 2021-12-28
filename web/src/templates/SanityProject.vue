@@ -193,7 +193,7 @@ export default {
     @extend .col-xxl-10
   }
   &__next-text-container {
-    margin-bottom: 6rem;
+    margin-top: 8rem;
   }
   &__title {
     font-size: 100%;
