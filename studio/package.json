@@ -5,29 +5,26 @@
   "main": "package.json",
   "author": "Sanity <hello@sanity.io>",
   "scripts": {
-    "dev": "sanity start",
-    "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
+    "start": "sanity start",
+    "dev": "sanity dev",
     "build": "sanity build",
+    "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
     "graphql-deploy": "sanity graphql deploy --playground",
     "lint": "eslint .",
     "test": "sanity check"
   },
   "dependencies": {
-    "@sanity/base": "^2.20.0",
-    "@sanity/cli": "^2.20.0",
-    "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.20.0",
-    "@sanity/dashboard": "^2.20.0",
-    "@sanity/default-layout": "^2.20.0",
-    "@sanity/default-login": "^2.19.0",
-    "@sanity/desk-tool": "^2.20.0",
+    "@sanity/client": "^6.11.1",
+    "@sanity/dashboard": "^3.1.6",
+    "@sanity/vision": "^3.25.0",
     "date-fns": "^2.25.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
-    "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "sanity-plugin-dashboard-widget-netlify": "^1.1.0",
+    "sanity": "^3.25.0",
+    "sanity-plugin-dashboard-widget-document-list": "^1.0.1",
+    "sanity-plugin-dashboard-widget-netlify": "^2.0.1",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
@@ -40,6 +37,6 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-standard": "^5.0.0",
-    "prettier-eslint-cli": "^5.0.1"
+    "prettier-eslint-cli": "^8.0.1"
   }
 }
