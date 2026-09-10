@@ -1,9 +1,9 @@
 // import sanityClient from 'part:@sanity/base/client'
-import { createClient } from '@sanity/client'
+import {createClient} from '@sanity/client'
 
 const client = createClient({
-  projectId: "guwsuxij",
-  dataset: "production",
+  projectId: 'guwsuxij',
+  dataset: 'production',
   useCdn: false,
   apiVersion: '2024-01-01',
   token: process.env.SANITY_SECRET_TOKEN // Must have write access
@@ -18,14 +18,14 @@ export default {
   },
   fields: [
     {
-      name: "filename",
-      type: "slug",
-      title: "Filename",
+      name: 'filename',
+      type: 'slug',
+      title: 'Filename',
       options: {
-          source: async (options) => {
-            const parent = options.parent.asset
-            const fileName = await client.fetch(`*[_type == 'sanity.imageAsset' && _id == $parentId][0].originalFilename`, { parentId: parent._ref})
-            return fileName
+        source: async (options) => {
+          const parent = options.parent.asset
+          const fileName = await client.fetch('*[_type == \'sanity.imageAsset\' && _id == $parentId][0].originalFilename', {parentId: parent._ref})
+          return fileName
         },
         slugify: source => source
       }
@@ -58,7 +58,7 @@ export default {
           {title: 'Half Push', value: 'grid-block--half-push'},
           {title: 'Half Push Desktop', value: 'grid-block--half-push-md'},
           {title: 'Half Centered', value: 'grid-block--half-centered'},
-          {title: 'Half Centered Desktop', value: 'grid-block--half-centered-md'},
+          {title: 'Half Centered Desktop', value: 'grid-block--half-centered-md'}
         ],
         layout: 'radio'
       },
@@ -74,10 +74,10 @@ export default {
       alt: 'alt',
       layout: 'layout'
     },
-    prepare(selection) {
+    prepare (selection) {
       const {filename, imageUrl, layout, caption, alt} = selection
       return {
-        imageUrl: imageUrl,
+        imageUrl,
         title: caption ? `${filename + ' | ' + layout + ' | ' + caption}` : filename + ' | ' + layout,
         subtitle: alt
       }

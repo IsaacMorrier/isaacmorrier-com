@@ -1,0 +1,29 @@
+---
+import { PortableText } from 'astro-portabletext';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sanityClient } from '../lib/sanity';
+import { siteSettingsQuery } from '../lib/queries';
+import type { SiteSettings } from '../lib/types';
+
+const settings = await sanityClient.fetch<SiteSettings>(siteSettingsQuery);
+---
+
+<BaseLayout title="Info" headerSubtitle="">
+  <div class="grid-container">
+    <div class="row grid-padding">
+      <div class="main col-10">
+        <div class="body-content row">
+          {settings.author?.bio && <PortableText value={settings.author.bio} />}
+        </div>
+      </div>
+      <div class="sidebar col-2">
+        <div class="sidebar-content row">
+          <p class="col-12">
+            <a class="nav-link" href="https://instagram.com/isaacmorrier" target="_blank">instagram</a><br />
+            <a class="nav-link" href="https://linkedin.com/in/isaacmorrier" target="_blank">linkedin</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

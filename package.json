@@ -1,27 +1,32 @@
 {
   "private": true,
   "name": "isaacmorrier-com",
-  "version": "1.0.5",
-  "engineStrict": true,
+  "version": "2.0.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "studio",
+    "web"
+  ],
   "scripts": {
-    "build": "lerna run build --parallel",
-    "dev": "lerna run dev --parallel",
-    "format": "lerna run format",
-    "build-studio": "lerna bootstrap && cd studio && npm run build",
-    "build-web": "lerna bootstrap && (cd studio && SANITY_AUTH_TOKEN=$SANITY_DEPLOY_STUDIO_TOKEN npm run graphql-deploy) && (cd web && npm run build)",
-    "graphql-deploy": "lerna run graphql-deploy",
-    "lint": "lerna run lint",
-    "postinstall": "lerna bootstrap",
+    "dev": "concurrently -n studio,web -c blue,magenta \"npm run dev-studio\" \"npm run dev-web\"",
+    "dev-studio": "npm run dev --workspace studio",
+    "dev-web": "npm run dev --workspace web",
+    "build": "npm run build --workspaces --if-present",
+    "build-studio": "npm run build --workspace studio",
+    "build-web": "npm run build --workspace web",
+    "lint": "npm run lint --workspace studio",
+    "format": "npm run format --workspace studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.20.0",
-    "lerna": "^8.0.2"
+    "concurrently": "^10.0.5"
   },
-  "dependencies": {
-    "es6-promise": "^4.2.8",
-    "vuex": "^3.6.2",
-    "vuex-persistedstate": "^4.1.0",
-    "vuex-shared-mutations": "^1.0.2"
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "@parcel/watcher@2.6.0": true,
+    "core-js@3.50.0": true,
+    "fsevents@2.3.3": true
   }
 }

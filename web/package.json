@@ -1,22 +1,22 @@
 {
-  "name": "sanity-gridsome-web",
   "private": true,
+  "name": "isaacmorrier-com-web",
+  "version": "2.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "build": "gridsome build",
-    "dev": "gridsome develop",
-    "explore": "gridsome explore"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@gridsome/plugin-google-analytics": "^0.1.2",
-    "@sanity/image-url": "^1.0.1",
-    "dotenv": "^10.0.0",
-    "gridsome": "^0.7.23",
-    "gridsome-source-sanity": "^1.1.0",
-    "sanity-blocks-vue-component": "^0.1.0",
-    "sharp": "^0.29.1"
-  },
-  "devDependencies": {
-    "sass": "^1.42.1",
-    "sass-loader": "^10.1.1"
+    "@sanity/client": "^8.6.1",
+    "@sanity/image-url": "^2.1.1",
+    "astro": "^7.3.2",
+    "astro-portabletext": "^1.0.0",
+    "sass": "^1.104.0"
   }
 }

@@ -13,14 +13,14 @@ import mainImage from './objects/mainImage'
 import authorReference from './objects/authorReference'
 
 export default [
-    siteSettings,
-    project,
-    post,
-    category,
-    author,
-    mainImage,
-    authorReference,
-    bodyPortableText,
-    bioPortableText,
-    excerptPortableText
-  ]
+  siteSettings,
+  project,
+  post,
+  category,
+  author,
+  mainImage,
+  authorReference,
+  bodyPortableText,
+  bioPortableText,
+  excerptPortableText
+]

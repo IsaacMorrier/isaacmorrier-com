@@ -1,0 +1,11 @@
+---
+import { imageSrc } from '../lib/image';
+import type { SanityImage } from '../lib/types';
+
+const { node: image } = Astro.props as { node: SanityImage };
+---
+
+<figure class={image.layout}>
+  <img src={imageSrc(image)} alt={image.alt} />
+  <figcaption>{image.caption}</figcaption>
+</figure>

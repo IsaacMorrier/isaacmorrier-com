@@ -1,17 +1,16 @@
-import { defineConfig } from "sanity"
-import { structureTool } from 'sanity/structure'
-import { visionTool } from '@sanity/vision'
+import {defineConfig} from 'sanity'
+import {structureTool} from 'sanity/structure'
+import {visionTool} from '@sanity/vision'
 import schemas from './schemas/schema'
-import deskStructure from "./deskStructure"
-import { dashboardTool } from "@sanity/dashboard"
-import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list"
-import { netlifyWidget } from "sanity-plugin-dashboard-widget-netlify"
-import { Logo } from './plugins/Logo'
-
+import deskStructure from './deskStructure'
+import {dashboardTool} from '@sanity/dashboard'
+import {documentListWidget} from 'sanity-plugin-dashboard-widget-document-list'
+import {netlifyWidget} from 'sanity-plugin-dashboard-widget-netlify'
+import {Logo} from './plugins/Logo'
 
 export default defineConfig({
-  projectId: "guwsuxij",
-  dataset: "production",
+  projectId: 'guwsuxij',
+  dataset: 'production',
   plugins: [
     structureTool({
       structure: deskStructure
@@ -50,9 +49,9 @@ export default defineConfig({
       return prev
     }
     return prev.filter((tool) => tool.name !== 'vision')
-    },
+  },
   schema: {
-    types: schemas,
+    types: schemas
   },
   studio: {
     components: {
@@ -60,17 +59,17 @@ export default defineConfig({
     }
   },
   document: {
-    newDocumentOptions: (prev, { creationContext }) => {
+    newDocumentOptions: (prev, {creationContext}) => {
       if (creationContext.type === 'global') {
-        return prev.filter((templateItem) => templateItem.templateId != 'siteSettings')
+        return prev.filter((templateItem) => templateItem.templateId !== 'siteSettings')
       }
       return prev
     },
-    actions: (prev, { schemaType }) => {
+    actions: (prev, {schemaType}) => {
       if (schemaType === 'siteSettings') {
-        return prev.filter(({ action }) => !['unpublish', 'delete','duplicate'].includes(action))
+        return prev.filter(({action}) => !['unpublish', 'delete', 'duplicate'].includes(action))
       }
       return prev
-    },
-  },
-});
+    }
+  }
+})
