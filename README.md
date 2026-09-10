@@ -1,40 +1,29 @@
 # isaacmorrier.com
 
-_Fully customizable blog template with a Vue.js front-end._
+Personal site and portfolio, built with [Astro](https://astro.build) and structured content from [Sanity](https://www.sanity.io), deployed on [Netlify](https://netlify.com).
 
-Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-gridsome-blog).
+## What's here
 
-## What you have
+This is an npm workspaces monorepo with two packages:
 
-- A fast by default blog with [Gridsome](https://gridsome.org)
-- Structured content using [Sanity.io](https://www.sanity.io)
-- Global deployment on [Netlify](https://netlify.com)
+- `web/` — the Astro site (isaacmorrier.com)
+- `studio/` — the Sanity Studio CMS
 
 ## Quick start
 
 1. Clone this repository
-2. `npm install` in the project root folder on local
+2. `npm install` in the project root
 3. `npm run dev` to start the studio and frontend locally
-   - Your studio should be running on [http://localhost:3333](http://localhost:3333)
-   - Your frontend should be running on [http://localhost:8080](http://localhost:8080)
-4. `npm run build` to build to production locally
+   - Studio: [http://localhost:3333](http://localhost:3333)
+   - Frontend: [http://localhost:4321](http://localhost:4321)
+4. `npm run build` to build both locally
 
-## Enable real-time content preview on development
+Requires Node 24+ (see `.nvmrc`).
 
-1. Go to your [project’s API settings on manage.sanity.io](https://manage.sanity.io/projects/guwsuxij/settings/api) and create a token with read rights.
-2. Rename `.env.development.template` to `.env.development` and paste in the token: `SANITY_READ_TOKEN="yourTokenHere"`.
-3. Restart the development server (`ctrl + C` and `npm run dev`).
+## Content
 
-If you want to turn off preview you can set `watchMode: false` in gridsome-config.js. If you just want to preview published changes you can set `overlayDrafts: false` in gridsome-config.js.
+Frontend fetches from Sanity's production dataset at build/dev time via GROQ. Local Studio edits the live dataset.
 
 ## Deploy changes
 
-Netlify automatically deploys new changes commited to master on GitHub. If you want to change deployment branch, do so in [build & deploy settings on Netlify](https://www.netlify.com/docs/continuous-deployment/#branches-deploys).
-
-This starter comes with a Netlify-widget that lets you trigger new deploys from Sanity Studio.
-
-## Stuck? Get help
-
-[![Slack Community Button](https://slack.sanity.io/badge.svg)](https://slack.sanity.io/)
-
-Join [Sanity’s developer community](https://slack.sanity.io) or ping us [on twitter](https://twitter.com/sanity_io).
+Netlify automatically deploys new changes pushed to `main`. `web/` and `studio/` deploy as separate Netlify sites, built via the root `build-web` / `build-studio` scripts. Studio also has a dashboard widget that can trigger new deploys from within the CMS.

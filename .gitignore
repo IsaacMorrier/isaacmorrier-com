@@ -4,5 +4,5 @@
 # Dependency directories
 /node_modules
 
-# lerna files
-/lerna-debug.log
+# Claude Code local tooling config (machine-specific paths)
+/.claude

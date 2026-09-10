@@ -1,5 +1,13 @@
-import sanityClient from 'part:@sanity/base/client'
-const client = sanityClient.withConfig({apiVersion: '2021-03-25'})
+// import sanityClient from 'part:@sanity/base/client'
+import {createClient} from '@sanity/client'
+
+const client = createClient({
+  projectId: 'guwsuxij',
+  dataset: 'production',
+  useCdn: false,
+  apiVersion: '2024-01-01',
+  token: process.env.SANITY_SECRET_TOKEN // Must have write access
+})
 
 export default {
   name: 'mainImage',
@@ -10,36 +18,29 @@ export default {
   },
   fields: [
     {
-      name: "filename",
-      type: "slug",
-      title: "Filename",
+      name: 'filename',
+      type: 'slug',
+      title: 'Filename',
       options: {
-          isHighlighted: true,
-          source: async (docs, options) => {
-            const parent = options.parent.asset
-            const fileName = await client.fetch(`*[_type == 'sanity.imageAsset' && _id == $parentId][0].originalFilename`, { parentId: parent._ref})
-            return fileName
+        source: async (options) => {
+          const parent = options.parent.asset
+          const fileName = await client.fetch('*[_type == \'sanity.imageAsset\' && _id == $parentId][0].originalFilename', {parentId: parent._ref})
+          return fileName
         },
         slugify: source => source
-      },
+      }
     },
     {
       name: 'caption',
       type: 'string',
-      title: 'Caption',
-      options: {
-        isHighlighted: true
-      }
+      title: 'Caption'
     },
     {
       name: 'alt',
       type: 'string',
       title: 'Alternative text',
       description: 'Important for SEO and accessiblity.',
-      validation: Rule => Rule.error('You have to fill out the alternative text.').required(),
-      options: {
-        isHighlighted: true
-      }
+      validation: Rule => Rule.error('You have to fill out the alternative text.').required()
     },
     {
       name: 'layout',
@@ -57,10 +58,9 @@ export default {
           {title: 'Half Push', value: 'grid-block--half-push'},
           {title: 'Half Push Desktop', value: 'grid-block--half-push-md'},
           {title: 'Half Centered', value: 'grid-block--half-centered'},
-          {title: 'Half Centered Desktop', value: 'grid-block--half-centered-md'},
+          {title: 'Half Centered Desktop', value: 'grid-block--half-centered-md'}
         ],
-        layout: 'radio',
-        isHighlighted: true
+        layout: 'radio'
       },
       initialValue: 'col-12'
 
@@ -74,10 +74,10 @@ export default {
       alt: 'alt',
       layout: 'layout'
     },
-    prepare(selection) {
+    prepare (selection) {
       const {filename, imageUrl, layout, caption, alt} = selection
       return {
-        imageUrl: imageUrl,
+        imageUrl,
         title: caption ? `${filename + ' | ' + layout + ' | ' + caption}` : filename + ' | ' + layout,
         subtitle: alt
       }

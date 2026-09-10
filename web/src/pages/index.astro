@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { sanityClient } from '../lib/sanity';
+import { projectsQuery, siteSettingsQuery } from '../lib/queries';
+import type { Project, SiteSettings } from '../lib/types';
+
+const [projects, settings] = await Promise.all([
+  sanityClient.fetch<Project[]>(projectsQuery),
+  sanityClient.fetch<SiteSettings>(siteSettingsQuery),
+]);
+---
+
+<BaseLayout title="Work" description={settings.description} headerSubtitle={settings.subtitle}>
+  <div class="projects-list">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/utils' as *;
+
+  .projects-list {
+    @extend .grid-container;
+
+    :global(.project-card) {
+      margin-bottom: 6rem;
+    }
+  }
+</style>

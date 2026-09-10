@@ -1,0 +1,82 @@
+---
+import { PortableText } from 'astro-portabletext';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PortableTextImage from '../components/PortableTextImage.astro';
+import { sanityClient } from '../lib/sanity';
+import { projectsQuery } from '../lib/queries';
+import type { Project } from '../lib/types';
+
+export async function getStaticPaths() {
+  const projects = await sanityClient.fetch<Project[]>(projectsQuery);
+
+  return projects.map((project, index) => {
+    const nextIndex = index < projects.length - 1 ? index + 1 : 0;
+    return {
+      params: { slug: project.slug },
+      props: { project, next: projects[nextIndex] },
+    };
+  });
+}
+
+interface Props {
+  project: Project;
+  next: Project;
+}
+
+const { project, next } = Astro.props;
+
+const portableTextComponents = { type: { mainImage: PortableTextImage } };
+---
+
+<BaseLayout title={project.title} description={project.subtitle} headerSubtitle={project.title}>
+  <div class="project">
+    <ProjectCard project={project} linked={false} />
+
+    {project.body && project.body.length > 0 && (
+      <div class="project__content body-content row">
+        <PortableText value={project.body} components={portableTextComponents} />
+      </div>
+    )}
+
+    <div class="project__next">
+      <div class="project__next-text-container">
+        <p>next:</p>
+      </div>
+    </div>
+
+    <ProjectCard project={next} />
+
+    <div class="project__footer">
+      <div class="project__footer-nav-container">
+        <a href="/" class="nav-link">home</a>
+        <a href="/info" class="nav-link">info</a>
+        <a href="https://instagram.com/isaacmorrier" target="_blank" class="nav-link">instagram</a>
+        <a href="https://linkedin.com/in/isaacmorrier" target="_blank" class="nav-link">linkedin</a>
+      </div>
+      <div class="project__footer-copyright-container">
+        <p><span class="nav-link">&copy; Isaac Morrier 2013&ndash;{new Date().getFullYear()}</span></p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/utils' as *;
+
+  .project {
+    @extend .grid-container;
+
+    &__content,
+    &__footer,
+    &__next {
+      @extend .row, .grid-padding;
+    }
+    &__footer-nav-container {
+      @extend .col-xxl-10
+    }
+    &__next-text-container {
+      margin-top: 8rem;
+    }
+  }
+</style>
